@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>禅心小筑</title>
   
-  
+  <subtitle>随遇而安</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yiminilife.com/"/>
-  <updated>2019-07-15T03:29:27.395Z</updated>
+  <updated>2019-07-15T11:49:53.448Z</updated>
   <id>http://yiminilife.com/</id>
   
   <author>
@@ -17,23 +17,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yiminilife.com/2019/07/15/hello-world/"/>
-    <id>http://yiminilife.com/2019/07/15/hello-world/</id>
-    <published>2019-07-15T03:29:27.394Z</published>
-    <updated>2019-07-15T03:29:27.395Z</updated>
+    <title>hexo博客备份</title>
+    <link href="http://yiminilife.com/2019/07/15/hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD/"/>
+    <id>http://yiminilife.com/2019/07/15/hexo博客备份/</id>
+    <published>2019-07-15T11:02:57.000Z</published>
+    <updated>2019-07-15T11:49:53.448Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<ol><li><p>将本地hexo博客的仓库初始化为git项目</p><p>注意：检查一下theme文件夹下的主题。例如如果themes/next，此目录下若有.git文件夹，请删除这个.git文件夹。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//默认已经在项目根路径下</span><br><span class="line">git init  //初始化本地仓库</span><br></pre></td></tr></table></figure></li><li><p>配置.gitignore文件</p><p>新建.gitignore（有则忽略），在文件中输入以下内容</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.<span class="built_in">log</span></span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre></td></tr></table></figure></li><li><p>将本地仓库和xxx.github.io仓库的url配对，推送本地仓库文件至远端的hexo分支</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"blog hexo"</span></span><br><span class="line">git branch hexo  //新建hexo分支</span><br><span class="line">git checkout hexo  //切换到hexo分支上</span><br><span class="line">git remote add origin git@github.com:xxx/xxx.github.io.git  //xxx为github用户名</span><br><span class="line">git push origin hexo  //push到Github项目的hexo分支上</span><br></pre></td></tr></table></figure></li></ol><ol start="4"><li><p>在其他终端获取hexo仓库，进行写作。</p><ul><li><p>从github上拉取hexo分支的代码</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -b hexo git@github.com:user/user.github.io.git  //将Github中hexo分支<span class="built_in">clone</span>到本地</span><br><span class="line"><span class="built_in">cd</span> user.github.io</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li><li><p>写文章并进行备份和部署</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//进入user.github.io文件夹,应是hexo分支</span><br><span class="line">git pull origin hexo //本地和远端的融合</span><br><span class="line">hexo new post <span class="string">"new post name"</span>  //写新文章</span><br><span class="line">git add <span class="built_in">source</span></span><br><span class="line">git commit -m <span class="string">"xxx"</span></span><br><span class="line">git push origin hexo  //备份</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure></li></ul></li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;将本地hexo博客的仓库初始化为git项目&lt;/p&gt;
+&lt;p&gt;注意：检查一下theme文件夹下的主题。例如如果themes/next，此目录下若有.git文件夹，请删除这个.git文件夹。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;
       
     
     </summary>
     
+      <category term="技术" scheme="http://yiminilife.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="hexo" scheme="http://yiminilife.com/tags/hexo/"/>
+    
+      <category term="备份" scheme="http://yiminilife.com/tags/%E5%A4%87%E4%BB%BD/"/>
     
   </entry>
   
