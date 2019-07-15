@@ -192,9 +192,9 @@ site_state: true
 social:
   GitHub: https://github.com/Jing0017 || github
   # E-Mail: jingyan0529@163.com || envelope
-  Weibo: https://weibo.com/yourname || weibo
-  Google: https://plus.google.com/yourname || google
-  Twitter: https://twitter.com/yourname || twitter
+  Weibo: https://weibo.com/u/2622648521 || weibo
+  # Google: https://plus.google.com/yourname || google
+  # Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
@@ -206,9 +206,6 @@ social_icons:
   enable: true
   icons_only: false
   transition: false
-  GitHub: github
-  Twitter: twitter
-  Weibo: weibo
 
 # Blog rolls
 links_icon: link

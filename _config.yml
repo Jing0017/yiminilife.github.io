@@ -4,12 +4,12 @@
 
 # Site
 title: 禅心小筑
-subtitle:   
-description:
-keywords:
+subtitle: 随遇而安   
+description: 菩提本无树，明镜亦非台。本来无一物，何处惹尘埃。
+keywords: 技术 生活 修行 求道。
 author: 随风
-language:
-timezone:
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
