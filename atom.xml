@@ -5,9 +5,9 @@
   <subtitle>随遇而安</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yiminilife.com/"/>
+  <link href="https://yiminilife.com/"/>
   <updated>2019-07-15T11:49:53.448Z</updated>
-  <id>http://yiminilife.com/</id>
+  <id>https://yiminilife.com/</id>
   
   <author>
     <name>随风</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>hexo博客备份</title>
-    <link href="http://yiminilife.com/2019/07/15/hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD/"/>
-    <id>http://yiminilife.com/2019/07/15/hexo博客备份/</id>
+    <link href="https://yiminilife.com/2019/07/15/hexo%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD/"/>
+    <id>https://yiminilife.com/2019/07/15/hexo博客备份/</id>
     <published>2019-07-15T11:02:57.000Z</published>
     <updated>2019-07-15T11:49:53.448Z</updated>
     
@@ -37,12 +37,12 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yiminilife.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="https://yiminilife.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="hexo" scheme="http://yiminilife.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://yiminilife.com/tags/hexo/"/>
     
-      <category term="备份" scheme="http://yiminilife.com/tags/%E5%A4%87%E4%BB%BD/"/>
+      <category term="备份" scheme="https://yiminilife.com/tags/%E5%A4%87%E4%BB%BD/"/>
     
   </entry>
   
