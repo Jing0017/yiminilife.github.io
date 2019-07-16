@@ -1154,7 +1154,7 @@ post_wordcount:
   min2read: true
 
 # Online contact
-daovoice: true
+daovoice: false
 daovoice_app_id: b9a84efc
 
 # netease music

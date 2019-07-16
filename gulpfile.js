@@ -51,4 +51,4 @@ gulp.task('minify-images', function() {
 });
 
 // 执行 gulp 命令时执行的任务
-gulp.task('default', gulp.series('minify-html', 'minify-css', 'minify-js', 'minify-images'));
+gulp.task('default', gulp.parallel('minify-html', 'minify-css', 'minify-js', 'minify-images'));
