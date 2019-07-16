@@ -151,11 +151,11 @@ baidu_push: false
 # External url should start with http:// or https://
 menu:
   home: / || home
-  #about: /about/ || user
+  about: /about/ || user
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  #schedule: /schedule/ || calendar
+  schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
 
@@ -232,7 +232,7 @@ toc:
   # Automatically add list number to toc.
   number: true
   # If true, all words will placed on next lines if header width longer then sidebar width.
-  wrap: false
+  wrap: true
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
   expand_all: false
   # Maximum heading depth of generated toc. You can set it in one post through `toc_max_depth` in Front-matter.
@@ -241,7 +241,7 @@ toc:
 sidebar:
   # Sidebar Position.
   position: left
-  #position: right
+  # position: right
 
   # Manual define the sidebar width. If commented, will be default for:
   # Muse | Mist: 320
@@ -320,7 +320,7 @@ symbols_count_time:
   wpm: 275
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
-tag_icon: false
+tag_icon: true
 
 # Wechat Subscriber
 wechat_subscriber:
@@ -556,7 +556,7 @@ quicklink:
 # Bookmark Support
 # Dependencies: https://github.com/theme-next/theme-next-bookmark
 bookmark:
-  enable: false
+  enable: true
   # If auto, save the reading position when closing the page or clicking the bookmark-icon.
   # If manual, only save it by clicking the bookmark-icon.
   save: auto
@@ -564,7 +564,7 @@ bookmark:
 # Reading progress bar
 # Dependencies: https://github.com/theme-next/theme-next-reading-progress
 reading_progress:
-  enable: false
+  enable: true
   color: "#37c6c0"
   height: 2px
 
@@ -574,9 +574,9 @@ reading_progress:
 # To get api_key: https://console.developers.google.com
 # Create & manage a public Google calendar: https://support.google.com/calendar/answer/37083
 calendar:
-  enable: false
-  calendar_id: <required> # Your Google account E-Mail
-  api_key: <required>
+  enable: true
+  calendar_id: jingyan0529@gmail.com # Your Google account E-Mail
+  api_key: AIzaSyB2odmQ2hnkoasEPXLUZHvgxznDXpiGEwE
   orderBy: startTime
   offsetMax: 24 # Time Range
   offsetMin: 4 # Time Range
@@ -699,7 +699,7 @@ needmoreshare2:
       position: bottomCenter
       networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook
   float:
-    enable: true
+    enable: false
     options:
       iconStyle: box
       boxForm: horizontal
