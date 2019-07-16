@@ -110,7 +110,7 @@ disable_baidu_transformation: false
 canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post / page titles for better SEO-optimization.
-seo: false
+seo: true
 
 # If true, will add site-subtitle to index page.
 # Remember to set up your site-subtitle in Hexo `_config.yml` (e.g. subtitle: Subtitle)
@@ -121,7 +121,7 @@ exturl: false
 
 # Google Webmaster tools verification.
 # See: https://www.google.com/webmasters
-google_site_verification:
+google_site_verification: ylQocPA1wJPTNxRLHN4-7GXUjjNQ8TnAPvTAKrHUa_k
 
 # Bing Webmaster tools verification.
 # See: https://www.bing.com/webmaster
@@ -1153,4 +1153,11 @@ post_wordcount:
   wordcount: true
   min2read: true
 
+# Online contact
+daovoice: true
+daovoice_app_id: b9a84efc
+
+# netease music
+netease_music:
+  enable: true
 

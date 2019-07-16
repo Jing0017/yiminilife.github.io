@@ -33,6 +33,10 @@
             {% endif %}
               <p class="site-author-name" itemprop="name">{{ author }}</p>
               <div class="site-description motion-element" itemprop="description">{{ description }}</div>
+
+            {% if theme.netease_music.enable %}
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=16323797&auto=1&height=66"></iframe>
+            {% endif %}
           </div>
 
           {% if theme.site_state %}

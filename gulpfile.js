@@ -3,15 +3,11 @@ var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var htmlmin = require('gulp-htmlmin');
 var htmlclean = require('gulp-htmlclean');
-const babel = require('gulp-babel');
+var imagemin = require('gulp-imagemin');
+var babel = require('gulp-babel');
 
-// 压缩 public 目录 css
-gulp.task('minify-css', function() {
-    return gulp.src('./public/**/*.css')
-        .pipe(minifycss())
-        .pipe(gulp.dest('./public'));
-});
-// 压缩 public 目录 html
+
+// 压缩html
 gulp.task('minify-html', function() {
     return gulp.src('./public/**/*.html')
         .pipe(htmlclean())
@@ -23,7 +19,16 @@ gulp.task('minify-html', function() {
         }))
         .pipe(gulp.dest('./public'))
 });
-// 压缩 public/js 目录 js
+// 压缩css
+gulp.task('minify-css', function() {
+    return gulp.src('./public/**/*.css')
+        .pipe(minifycss({
+            compatibility: 'ie8'
+        }))
+        .pipe(gulp.dest('./public'));
+});
+
+// 压缩 js
 gulp.task('minify-js', function() {
     return gulp.src('./public/**/*.js')
         .pipe(babel())
@@ -31,5 +36,17 @@ gulp.task('minify-js', function() {
         .pipe(gulp.dest('./public'));
 });
 
+// 压缩图片
+gulp.task('minify-images', function() {
+    return gulp.src('./public/images/**/*.*')
+        .pipe(imagemin(
+            [imagemin.gifsicle({ 'optimizationLevel': 3 }),
+                imagemin.jpegtran({ 'progressive': true }),
+                imagemin.optipng({ 'optimizationLevel': 7 }),
+                imagemin.svgo()
+            ], { 'verbose': true }))
+        .pipe(gulp.dest('./public/images'))
+});
+
 // 执行 gulp 命令时执行的任务
-gulp.task('default', gulp.series('minify-html', 'minify-css', 'minify-js'));
+gulp.task('default', gulp.parallel('minify-html', 'minify-css', 'minify-js', 'minify-images'));
