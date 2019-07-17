@@ -294,7 +294,7 @@ excerpt_description: true
 # Automatically Excerpt (Not recommend).
 # Use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: false
+  enable: true
   length: 150
 
 # Read more button
@@ -440,7 +440,8 @@ font:
   # Global font settings used for all elements in <body>.
   global:
     external: true
-    family: Lato
+    # family: Lato
+    family: Noto Serif TC
     size:
 
   # Font settings for Headlines (H1, H2, H3, H4, H5, H6).
@@ -946,7 +947,7 @@ pace:
 # Canvas-nest
 # Dependencies: https://github.com/theme-next/theme-next-canvas-nest
 canvas_nest:
-  enable: true
+  enable: false
   onmobile: true # display on mobile or not
   color: "0,0,255" # RGB values, use `,` to separate
   opacity: 0.5 # the opacity of line: 0~1
@@ -965,7 +966,7 @@ three:
 # Canvas-ribbon
 # Dependencies: https://github.com/theme-next/theme-next-canvas-ribbon
 canvas_ribbon:
-  enable: true
+  enable: false
   size: 50 # The width of the ribbon
   alpha: 0.2 # The transparency of the ribbon
   zIndex: -1 # The display level of the ribbon
