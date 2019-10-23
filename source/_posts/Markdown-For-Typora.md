@@ -1,10 +1,11 @@
 ---
 title: Markdown For Typora
-date: 2019-07-16 20:22:35
 categories: 技术
-tags: 
-- typora 
-- markdown
+tags:
+  - typora
+  - markdown
+abbrlink: b4b05a82
+date: 2019-07-16 20:22:35
 ---
 
 ## Overview

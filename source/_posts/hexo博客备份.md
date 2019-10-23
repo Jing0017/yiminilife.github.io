@@ -1,11 +1,12 @@
 ---
 title: hexo博客备份
-date: 2019-07-15 19:02:57
-categories: 
-- 技术
+categories:
+  - 技术
 tags:
-- hexo
-- 备份
+  - hexo
+  - 备份
+abbrlink: 2dd71a2b
+date: 2019-07-18 19:02:57
 ---
 
 ### 一、将本地hexo博客的仓库初始化为git项目

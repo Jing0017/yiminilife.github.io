@@ -1,11 +1,12 @@
 ---
 title: 基于GitHub Pages搭建Hexo博客
-date: 2019-07-17 14:07:18
 categories: 技术
-tags: 
-- hexo
-- git
-- node
+tags:
+  - hexo
+  - git
+  - node
+abbrlink: ff98e00c
+date: 2019-07-17 14:07:18
 ---
 
 ## 介绍
@@ -18,21 +19,21 @@ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 [Markdown](h
 
 访问git[官方下载页面](http://git-scm.com/downloads)下载对应终端的git安装包，笔者使用的是macbook,所以下载Mac OS X 版本。下载页面如下图所示，点击下载对应终端的git安装包即可。
 
-![image-20190717141834488.png](./基于GitHub-Pages-搭建Hexo博客/image-20190717141834488.png)
+![image-20190717141834488.png](image-20190717141834488.png)
 
 安装完毕在命令终端输入git，出现如下提示表示git安装成功。window用户可以使用git bash。
 
-![Snip20190717_22](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_22.png)
+![Snip20190717_22](Snip20190717_22.png)
 
 ### 安装nodejs
 
 访问[nodejs官网](https://nodejs.org)下载lts版本的安装包，笔者访问时的版本为10.16.0，直接点击下载安装即可。
 
-![Snip20190717_12.png](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_12.png)
+![Snip20190717_12.png](Snip20190717_12.png)
 
 安装完毕，在命令行输入`node -v`和`npm -v`出现版本信息，表示node安装成功。
 
-![Snip20190717_23](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_23.png)
+![Snip20190717_23](Snip20190717_23.png)
 
 ### 创建github仓库
 
@@ -47,13 +48,13 @@ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 [Markdown](h
 
 请务必遵循这俩个条件，否则后续访问会出现404错误。
 
-![Snip20190717_14.png](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_14.png)
+![Snip20190717_14.png](Snip20190717_14.png)
 
 #### 设置repository的Github Pages
 
 完成创建后，点击`Settings`，滚动下拉至Github Pages配置模块，配置`Source`，下拉框选择master分支。如果master branch为灰色，请先按照`Code`Tab页的教程生成README.md文件，然后在回来设置Github Pages。
 
-![Snip20190717_20.png](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_20.png)
+![Snip20190717_20.png](Snip20190717_20.png)
 
 #### 生成ssh秘钥
 
@@ -67,7 +68,7 @@ $ ssh-keygen -t rsa -C "Github的注册邮箱地址"
 
 遇到提示请按`Enter`，等待秘钥生成完毕，会得到两个文件**id_rsa**和**id_rsa.pub**，用文本编辑器打开**id_rsa.pub**复制里面内容。访问[这里](https://github.com/settings/ssh)，点击 `New SSH key`，将复制的内容粘贴至文本框中。最后点击`Add SSH key`。
 
-![Snip20190717_21.png](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_21.png)
+![Snip20190717_21.png](Snip20190717_21.png)
 
 
 
@@ -101,7 +102,7 @@ $ hexo
 
 若出现下图，说明hexo安装成功：
 
-![Snip20190717_24](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_24.png)
+![Snip20190717_24](Snip20190717_24.png)
 
 #### 初始化博客
 
@@ -224,7 +225,7 @@ language和timezone的配置，详细可参考[语言规范](https://en.wikipedi
 
 注意：language字段配置的zh-CN 必需和相关主题文件夹下 `/themes/next/languages`里面的国际化文件相匹配，否则配置将不生效，显示默认英文配置。
 
-![Snip20190717_25](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_25.png)
+![Snip20190717_25](Snip20190717_25.png)
 
 
 
@@ -254,7 +255,7 @@ deploy:
 
 此处repo配置为准备工作中我们创建的仓库。选择使用ssh方式克隆。branch选择master分支，和github page的设置相对应。
 
-![Snip20190717_26](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_26.png)
+![Snip20190717_26](Snip20190717_26.png)
 
 至此我们完成了hexo的安装与配置。
 
@@ -308,7 +309,7 @@ $ hexo new "静夜思"
 
 在/source/_post目录下找到 `静夜思.md`文件打开写入如下内容：
 
-![Snip20190717_27](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_27.png)
+![Snip20190717_27](Snip20190717_27.png)
 
 详细解释如下：
 
@@ -342,15 +343,15 @@ $ hexo generate //简写 hexo g
 $ hexo server // 简写 hexo s
 ```
 
-![Snip20190717_28](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_28.png)
+![Snip20190717_28](Snip20190717_28.png)
 
 根据提示访问http://localhost:4000。
 
 发现主页新增了一篇静夜思的文章，切分类为唐诗，标签为李白。
 
-![Snip20190717_33.png](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_33.png)
+![Snip20190717_33.png](Snip20190717_33.png)
 
-![Snip20190717_35.png](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_35.png)
+![Snip20190717_35.png](Snip20190717_35.png)
 
 笔者这里已经对主题进行了优化，所以和next的默认样式出入较大。
 
@@ -376,7 +377,7 @@ $ hexo deploy //简写 hexo d
 
 ###### Github Pages 配置域名
 
-![Snip20190717_36](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_36.png)
+![Snip20190717_36](Snip20190717_36.png)
 
 在仓库的`Settings`tab页中找到GitHub Pages 将`Custom domain` 设置为自己的域名。此时可以看到`Code`tab
 
@@ -386,15 +387,15 @@ $ hexo deploy //简写 hexo d
 
 新增俩条域名解析
 
-![Snip20190717_37](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_37.png)
+![Snip20190717_37](Snip20190717_37.png)
 
-![Snip20190717_38](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_38.png)
+![Snip20190717_38](Snip20190717_38.png)
 
 记录类型为**CNAME**，主机记录分别为**@**和**www**,记录值填**yourname.github.io**。等待域名解析生效。
 
 域名解析生效后，直接访问**http://你的域名**即可访问hexo博客。效果如下：
 
-![Snip20190717_43](./基于GitHub-Pages-搭建Hexo博客/Snip20190717_43.png)
+![Snip20190717_43](Snip20190717_43.png)
 
 
 

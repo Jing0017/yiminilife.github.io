@@ -1,11 +1,12 @@
 ---
 title: zuul 根据标签进行路由
-date: 2019-10-23 10:18:54
 categories: 技术
 tags:
-- zuul
-- 网关
-- Netflix
+  - zuul
+  - 网关
+  - Netflix
+abbrlink: 6d250c8e
+date: 2019-10-23 10:18:54
 ---
 
 ## 背景
@@ -22,7 +23,7 @@ tags:
 
 方案设计图如下：
 
-![1571798323362](./zuul-根据标签进行路由/1571798323362.png)
+![1571798323362](1571798323362.png)
 
 ## 实现
 
@@ -45,7 +46,7 @@ spring:
 
 启动成功后观察consul，出现相应标签，表示服务注册成功。
 
-![1571798927307](./zuul-根据标签进行路由/1571798927307.png)
+![1571798927307](1571798927307.png)
 
 #### 扩展路由策略
 
@@ -53,7 +54,7 @@ spring:
 
 首先，我们查看zuul源码，发现其使用的是netfix提供的ribbon-loadbalancer来实现负载均衡。程序中使用的版本为2.2.5。阅读源码发现ribbon主要通过ILoadBalancer接口定义了一系列行为：
 
-![](./zuul-根据标签进行路由/image2019-10-10_14-30-33.png)
+![](image2019-10-10_14-30-33.png)
 
 观察ILoadBalancer最基础的实现类com.netflix.loadbalancer.BaseLoadBalancer可以了解主要行为。LB的主要实现都在里面，DynamicServerListLoadBalancer和ZoneAwareLoadBalancer不过是扩展了他的功能而已。
 
@@ -67,13 +68,13 @@ spring:
 
 观察下几个主要方法。首先是最重要的的服务选择方法：
 
-![](./zuul-根据标签进行路由/image2019-10-10_14-38-4.png)
+![](image2019-10-10_14-38-4.png)
 
 可以看到将该功能委托给包含的负载均衡策略rule来实现。ok，下面我们来看一下Ribbon负载均衡策略定义：
 
 IRule其实就只做了一件事情Server choose(Object key)，可以看到这个功能是在LB中定义（要求）的，LB把这个功能委托给IRule来实现。不同的IRule可以向LB提供不同的负载均衡算法。
 
-![](./zuul-根据标签进行路由/image2019-10-10_14-39-57.png)
+![](image2019-10-10_14-39-57.png)
 
 com.netflix.loadbalancer包下面的提供了常用的几种策略。有RoundRobinRule、RandomRule这样的不依赖于Server运行状况的策略，也有AvailabilityFilteringRule、WeightedResponseTimeRule等多种基于收集到的Server运行状况决策的策略。判断运行状况时有，判断单个server的，也有判断整个zone的，适用于各种不同场景需求。
 
@@ -81,25 +82,25 @@ com.netflix.loadbalancer包下面的提供了常用的几种策略。有RoundRob
 
 详见ZoneAvoidanceRule源码：
 
-![](./zuul-根据标签进行路由/image2019-10-10_14-41-59.png)
+![](image2019-10-10_14-41-59.png)
 
 其中组合了ZoneAvoidancePredicate和AvailabilityPredicate俩个谓词。前一个，以一个区域为单位考察可用性，对于不可用的区域整个丢弃，从剩下区域中选可用的server。判断出最差的区域，排除掉最差区域。在剩下的区域中，将按照服务器实例数的概率抽样法选择，从而判断判定一个zone的运行性能是否可用，剔除不可用的zone（的所有server），AvailabilityPredicate用于过滤掉连接数过多的Server。
 
 我们看到ZoneAvoidanceRule中并没有重写choose方法，查看一下继承图：
 
-![](./zuul-根据标签进行路由/image2019-10-10_14-57-34.png)
+![](image2019-10-10_14-57-34.png)
 
 在PredicateBasedRule中我们发现：
 
-![](./zuul-根据标签进行路由/image2019-10-10_14-58-19.png)
+![](image2019-10-10_14-58-19.png)
 
 此处choose方法从lb中获取所有服务节点，然后针对具体实现类中的谓词（XXXPredicate）对服务节点进行过滤。继续跟踪最后发现执行至AbstractServerPredicate类中的代码：
 
-![](./zuul-根据标签进行路由/image2019-10-10_15-13-44.png)
+![](image2019-10-10_15-13-44.png)
 
 此处对server列表进行了过滤，过滤谓词是后面的this.getServerOnlyPredicate该方法只是简单返回了serverOnlyPredicate：
 
-![](./zuul-根据标签进行路由/image2019-10-10_15-15-40.png)
+![](image2019-10-10_15-15-40.png)
 
 此处可以发现，最终执行的谓词是具体子类定义的谓词，也就是ZoneAvoidanceRule的compositePredicate。
 
@@ -402,7 +403,7 @@ public class DefaultRibbonFilterContext implements RibbonFilterContext {
 
 最后在配置文件中加入以下配置：
 
-![](./zuul-根据标签进行路由/image2019-10-11_10-30-31.png)
+![](image2019-10-11_10-30-31.png)
 
 指定ribbon加载我们自定义的策略，此处参考了[spring-cloud官方文档](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-ribbon.html)：
 
@@ -412,11 +413,11 @@ public class DefaultRibbonFilterContext implements RibbonFilterContext {
 
 在wms-gateway的RoleFilter中做如下修改：
 
-![](./zuul-根据标签进行路由/image2019-10-10_16-19-49.png)
+![](image2019-10-10_16-19-49.png)
 
 其中RibbonFilterConstants：
 
-![](./zuul-根据标签进行路由/image2019-10-10_16-20-20.png)
+![](image2019-10-10_16-20-20.png)
 
 ## 遇到的问题以及解决方案
 
@@ -424,11 +425,11 @@ public class DefaultRibbonFilterContext implements RibbonFilterContext {
 
 开发环境自测的时候发现一个问题，请求没有按照指定的标签路由，排查发现自定义的RibbonFilterContext中存储的标签列表中存在重复的标签，日志如下：
 
-![](./zuul-根据标签进行路由/image2019-10-10_16-35-44.png)
+![](image2019-10-10_16-35-44.png)
 
 由此可见，contextTags中出现了俩个grey标签，导致谓词判断执行结果为false。而理论上contextTags中应该不会出现重复的标签。最终排查发现，虽然我们自定义了一套threadlocal变量，但是框架底层使用的线程池会对线程进行复用：
 
-![](./zuul-根据标签进行路由/image2019-10-10_16-53-55.png)
+![](image2019-10-10_16-53-55.png)
 
 解决方案：
 
@@ -436,12 +437,12 @@ public class DefaultRibbonFilterContext implements RibbonFilterContext {
 
 在每个请求执行完成时候，将相应的threadlocal变量remove。但是应该在什么时间点remove呢？没有思路，直接查询下zuul的生命周期，ZuulServlet:
 
-![](./zuul-根据标签进行路由/image2019-10-10_16-56-31.png)
+![](image2019-10-10_16-56-31.png)
   我们发现，zuul自身也维护了一套上下文环境变量，并且在请求结束时清空了。因此，我们可以直接复用zuul维护的RequestContext即可。
 
 2. 在每个请求结束时清空自定义上下文
 
-   ![](./zuul-根据标签进行路由/image2019-10-11_12-22-31.png)
+   ![](image2019-10-11_12-22-31.png)
 
 由图可知，无论*routing filters*成功与否，*post filters*都会被执行，其实通过刚刚的源码我们也可以验证这个执行流程。所以新增一个*post filter*,在其中执行清空自定义上下文。
 
@@ -495,7 +496,7 @@ public class ClearFilter extends ZuulFilter {
 
 项目在本地运行时，我们在本地的default配置文件中加入了以下代码：
 
-![](./zuul-根据标签进行路由/image2019-10-11_10-30-31.png)
+![](image2019-10-11_10-30-31.png)
 
 然而在发布开发环境的时候，由于我个人的疏忽，没有将开发环境的配置文件加上上述配置代码，可是令人惊讶的是程序运行正常，和预期结果一致。那么框架又是如何自动加载我们自定义的负载均衡策略的呢？
 
