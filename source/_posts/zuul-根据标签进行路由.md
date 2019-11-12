@@ -38,7 +38,7 @@ spring:
  cloud:
   consul:
    port: 8500
-    host: 10.53.255.8
+    host: xx.xx.xx.xx
      discovery:
       tags:
       - pro
