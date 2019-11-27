@@ -1,7 +1,7 @@
 ---
 title: hexo博客备份
 categories:
-  - 技术
+  - blog
 tags:
   - hexo
   - 备份

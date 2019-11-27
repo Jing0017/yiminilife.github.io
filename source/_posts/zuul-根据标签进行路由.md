@@ -1,6 +1,6 @@
 ---
 title: zuul 根据标签进行路由
-categories: 技术
+categories: java
 tags:
   - zuul
   - 网关

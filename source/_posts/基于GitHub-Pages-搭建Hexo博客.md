@@ -1,6 +1,6 @@
 ---
 title: 基于GitHub Pages搭建Hexo博客
-categories: 技术
+categories: blog
 tags:
   - hexo
   - git

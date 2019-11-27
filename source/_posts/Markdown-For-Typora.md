@@ -1,6 +1,6 @@
 ---
 title: Markdown For Typora
-categories: 技术
+categories: doc
 tags:
   - typora
   - markdown
