@@ -111,15 +111,7 @@ com.netflix.loadbalancer包下面的提供了常用的几种策略。有RoundRob
 要实现自定义的负载均衡策略ServiceTagsAwareRule，我们先要实现它的谓词，首先建立一个抽象谓词类（BaseDiscoveryEnabledPredicate）：
 
 ```java
-package com.shein.supply.wms.gateway.predicate;
- 
-import com.netflix.loadbalancer.AbstractServerPredicate;
-import com.netflix.loadbalancer.PredicateKey;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.cloud.consul.discovery.ConsulServer;
- 
-import java.util.Objects;
+
  
 /**
  * A template method predicate to be applied to service discovered server instances. The concrete implementation of
@@ -155,15 +147,7 @@ public abstract class BaseDiscoveryEnabledPredicate extends AbstractServerPredic
 再实现具体的谓词逻辑（ServiceTagsAwarePredicate）：
 
 ```java
-package com.shein.supply.wms.gateway.predicate;
- 
-import cn.dotfashion.soa.framework.util.JsonTools;
-import com.shein.supply.wms.gateway.api.RibbonFilterContext;
-import com.shein.supply.wms.gateway.support.RibbonFilterContextHolder;
-import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.cloud.consul.discovery.ConsulServer;
- 
-import java.util.List;
+
  
 /**
  * A default implementation of {@link ConsulServer} that matches the instance against the attributes
@@ -191,14 +175,7 @@ public class ServiceTagsAwarePredicate extends BaseDiscoveryEnabledPredicate {
 接下来我们来实现负载均衡策略（ServiceTagsAwareRule）：
 
 ```java
-package com.shein.supply.wms.gateway.rule;
- 
-import com.netflix.loadbalancer.AbstractServerPredicate;
-import com.netflix.loadbalancer.AvailabilityPredicate;
-import com.netflix.loadbalancer.CompositePredicate;
-import com.netflix.loadbalancer.PredicateBasedRule;
-import com.shein.supply.wms.gateway.predicate.BaseDiscoveryEnabledPredicate;
-import com.shein.supply.wms.gateway.predicate.ServiceTagsAwarePredicate;
+
  
 /**
  * @author yanjing
@@ -241,17 +218,7 @@ public class ServiceTagsAwareRule extends PredicateBasedRule {
 将自定义的策略配置交给spring管理：
 
 ```java
-package com.shein.supply.wms.gateway.support;
- 
-import com.shein.supply.wms.gateway.rule.ServiceTagsAwareRule;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+
  
 /**
  * The Ribbon discovery filter auto configuration.
@@ -276,9 +243,7 @@ public class RibbonDiscoveryRuleAutoConfiguration {
 自定义RibbonFilterContext:
 
 ```java
-package com.shein.supply.wms.gateway.api;
- 
-import java.util.List;
+
  
 /**
  * Ribbon discovery filter context,stores the tags based on which the server matching will be performed.
@@ -318,9 +283,7 @@ public interface RibbonFilterContext {
 RibbonFilterContextHolder:
 
 ```java
-package com.shein.supply.wms.gateway.support;
- 
-import com.shein.supply.wms.gateway.api.RibbonFilterContext;
+
  
 /**
  * The Ribbon filter context holder.
@@ -361,10 +324,7 @@ public class RibbonFilterContextHolder {
 DefaultRibbonFilterContext:
 
 ```java
-package com.shein.supply.wms.gateway.support;
- 
-import com.google.common.collect.Lists;
-import com.shein.supply.wms.gateway.api.RibbonFilterContext;
+
  
 import java.util.List;
  
@@ -447,14 +407,7 @@ public class DefaultRibbonFilterContext implements RibbonFilterContext {
 由图可知，无论*routing filters*成功与否，*post filters*都会被执行，其实通过刚刚的源码我们也可以验证这个执行流程。所以新增一个*post filter*,在其中执行清空自定义上下文。
 
 ```java
-package com.shein.supply.wms.gateway.filter;
- 
-import com.netflix.zuul.ZuulFilter;
-import com.shein.supply.wms.gateway.support.RibbonFilterContextHolder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
-import org.springframework.stereotype.Component;
+
  
 /**
  * @author yanjing
@@ -505,17 +458,7 @@ public class ClearFilter extends ZuulFilter {
 在经过本地调试后，我们仔细看下RibbonDiscoveryRuleAutoConfiguration和RibbonClientConfiguration这俩个文件：
 
 ```java
-package com.shein.supply.wms.gateway.support;
- 
-import com.shein.supply.wms.gateway.rule.ServiceTagsAwareRule;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+
  
 /**
  * The Ribbon discovery filter auto configuration.
