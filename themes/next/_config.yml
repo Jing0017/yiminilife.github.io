@@ -966,7 +966,7 @@ three:
 # Canvas-ribbon
 # Dependencies: https://github.com/theme-next/theme-next-canvas-ribbon
 canvas_ribbon:
-  enable: false
+  enable: true
   size: 50 # The width of the ribbon
   alpha: 0.2 # The transparency of the ribbon
   zIndex: -1 # The display level of the ribbon
@@ -1160,5 +1160,5 @@ daovoice_app_id: b9a84efc
 
 # netease music
 netease_music:
-  enable: true
+  enable: false
 
